@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FizzBuzz
@@ -14,7 +15,7 @@ namespace FizzBuzz
         public FizzBuzz()
         {
             this.message = new List<String>();
-            this.iterations = 100;
+            this.iterations = 256;
         }
 
         private void ExtendMessage(String message)
@@ -44,9 +45,36 @@ namespace FizzBuzz
                     ExtendMessage("Fizz");
                 }
 
+                if (i % 13 == 0)
+                {
+                    ExtendMessage("Fezz");
+                }
+
                 if (i % 5 == 0)
                 {
                     ExtendMessage("Buzz");
+                }
+
+                if (i % 7 == 0)
+                {
+                    ExtendMessage("Bang");
+                }
+
+                if (i % 11 == 0)
+                {
+                    this.message = new List<string>();
+
+                    if (i % 13 == 0)
+                    {
+                        ExtendMessage("Fezz");
+                    }
+
+                    ExtendMessage("Bong");
+                }
+                
+                if (i % 17 == 0)
+                {
+                    this.message.Reverse();
                 }
 
                 PrintMessage(i);
