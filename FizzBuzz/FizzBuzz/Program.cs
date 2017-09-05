@@ -15,7 +15,15 @@ namespace FizzBuzz
         public FizzBuzz()
         {
             this.message = new List<String>();
-            this.iterations = 256;
+            int iterations = 0;
+            String iterationsString = "-1";
+            while(!Int32.TryParse(iterationsString, out iterations) || !(iterations > 0))
+            {
+                Console.WriteLine("Number of iterations (must be greater than 0):");
+                iterationsString = Console.ReadLine();
+            }
+
+            this.iterations = iterations;
         }
 
         private void ExtendMessage(String message)
@@ -38,7 +46,7 @@ namespace FizzBuzz
 
         public void Run()
         {
-            for (int i = 0; i < this.iterations; i++)
+            for (int i = 1; i <= this.iterations; i++)
             {
                 if (i % 3 == 0)
                 {
